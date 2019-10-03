@@ -20,26 +20,26 @@ use a "simulate read/write" feature wherein it fires said type of requests with 
 (Everything needs to be run from the directory in which the files are present)
 Setting up the config file like [Config File](gen-java/config.txt)
 * First line of config.txt: Takes only 2 parameters (separated by a single whitespace). The first parameter is Nr and the second parameter is Nw.
-* Second line of config.txt: Takes only 1 parameters which is the sync time (in ms) \
+* Second line of config.txt: Takes only 1 parameters which is the sync time (in ms)
   Eg: \ 
   4 4 \
   10000 \
 * Setting up the test files in TestFiles folder: \
 
-  #######localhost 9005
-  #######localhost 9006
-  #######localhost 9007
-  #######localhost 9008
-  #######r file37.txt
-  #######r file2.txt
-  #######r file7.txt
-  #######r file31.txt
-  #######r file37.txt
-  #######r file50.txt
-  #######r file1.txt
-  #######r file50.txt
-  #######r file31.txt
-\
+  localhost 9005 \
+  localhost 9006 \
+  localhost 9007 \
+  localhost 9008 \
+  r file37.txt \
+  r file2.txt \
+  r file7.txt \
+  r file31.txt \
+  r file37.txt \
+  r file50.txt \
+  r file1.txt \
+  r file50.txt \
+  r file31.txt \
+  
   The first few lines provide the ip and port of all the connected servers (including the coordinator   node). The next few lines indicate the requests r/w for read/write followed by the filename. Please   Note: The connected servers in the system should be same as the servers mentioned in this file.       There ip-port should be same as well. Else, there is an error message shown gracefully. \
 
 * Compile the project using: \
@@ -66,25 +66,3 @@ java -cp ".:/usr/local/Thrift/*" Client testFile40_60.txt \
 ….\
 \
 (Note: We pass only one parameter, which is the file that contains the test details of the read/write operations. 50_50 indicates that the number of reads are 50% and number of writes are 50%. Similarly for 20_80 the number of reads are 20% and number of writes are 80%. Each of the provided files in TestFiles Directory has 2000 operations that would be fired from the Client)
-
-
-
-This [Java Properties File](gen-java/config.txt) stores many of the values needed to dynamically configure the
-system, including:
-* addresses and port numbers of each of the nodes.
-* filesystem paths.
-* node counts, quorum size for read/write.
-* coordinator id.
-* background synchronization delay.
-
-## INSTRUCTIONS
-
-There is a makefile provided that can be used to easily build and run the project.
-* Check to make sure the address, ports and other options are as desired in the
-[config file](gen-java/simpledfs.cfg).
-* Run “make clean && make” to rebuild the source.
-* Run “make cli” to run the client.
-* Run “make n NUM=<num>” to run the file server nodes.
-	* <num> starts at 0 and should be set based on what address and port number that node runs on.
-	* it's used to index into the comma separated list of addresses and port numbers provided in [the config file](gen-java/simpledfs.cfg).
-
