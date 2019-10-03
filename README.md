@@ -21,9 +21,7 @@ use a "simulate read/write" feature wherein it fires said type of requests with 
 Setting up the config file like [Config File](gen-java/config.txt)
 * First line of config.txt: Takes only 2 parameters (separated by a single whitespace). The first parameter is Nr and the second parameter is Nw.
 * Second line of config.txt: Takes only 1 parameters which is the sync time (in ms)
-  Eg: \ 
-  4 4 \
-  10000 \
+  
 * Setting up the test files in TestFiles folder: \
 
   localhost 9005 \
@@ -38,7 +36,7 @@ Setting up the config file like [Config File](gen-java/config.txt)
   r file50.txt \
   r file1.txt \
   r file50.txt \
-  r file31.txt \
+  r file31.txt
   
   The first few lines provide the ip and port of all the connected servers (including the coordinator   node). The next few lines indicate the requests r/w for read/write followed by the filename. Please   Note: The connected servers in the system should be same as the servers mentioned in this file.       There ip-port should be same as well. Else, there is an error message shown gracefully. \
 
